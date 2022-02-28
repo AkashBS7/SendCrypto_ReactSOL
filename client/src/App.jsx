@@ -1,9 +1,16 @@
 import React from "react"
+import { Navbar, Welcome, Footer, Transactions, Services } from "./components";
 
 const App = () => {
   return (
-    <div className="bg-red-100">
-      <h1 className="text-3xl  mt-11">Hello World</h1>
+    <div className="min-h-screen">
+      <div className="gradient-bg-welcome">
+        <Navbar />
+        <Welcome />
+      </div>
+      <Services />
+      <Transactions />
+      <Footer />
     </div>
   );
 };
