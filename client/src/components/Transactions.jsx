@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { TransactionContext } from "../context/TransactionContext";
 import dummyData from "../utils/dummyData";
@@ -33,7 +33,6 @@ const TransactionCard = ({addressTo, addressFrom, message, timestamp, keyword, u
             </>
           )}
 
-       
         </div>
         <img src={gifurl || url }  className='w-full h-64 2xl:h-96 rounded-md shadow-lg'/>
 
@@ -46,7 +45,7 @@ const TransactionCard = ({addressTo, addressFrom, message, timestamp, keyword, u
 }
 
 export default function Transactions() {
-  const { currentAccount } = useContext(TransactionContext);
+  const { currentAccount, transactions } = useContext(TransactionContext);
 
   return (
     <div className="flex w-full justify-center items-center 2xl:px-20 gradient-bg-transactions">
@@ -61,7 +60,7 @@ export default function Transactions() {
           </h3>
         )}
         <div className="flex flex-wrap justify-center items-center mt-10">
-          {dummyData.reverse().map((transaction, idx) => (
+          {transactions.reverse().map((transaction, idx) => (
             <TransactionCard {...transaction} key={idx} />
           ))}
         </div>
